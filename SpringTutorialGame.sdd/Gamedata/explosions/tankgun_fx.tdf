@@ -1,0 +1,75 @@
+[TANKGUN_FX]
+{
+[groundflash]
+   {
+      flashSize = 45;
+      flashAlpha = 0.9;
+      circleGrowth = 3;
+      circleAlpha = 0.3;
+      ttl = 30;
+      color = 1, 0.5, 0;
+air=1;
+     ground=1;
+      water=1;
+}
+[heatcloud_MED_EXPLOSION_FX01]
+   {
+class=heatcloud;
+      [properties]
+      {
+texture=explodeheat;
+      heat = 30;
+      maxheat = 30;
+      heatFalloff = 1;
+      size = 30;
+      sizeGrowth = -0.3;
+      sizemod = 0;
+      sizemodmod = 0;
+      speed = 0, 1.5, 0;
+      pos = 0, 5, 0;
+      }
+air=1;
+      water=1;
+      ground=1;
+      count=1;
+}
+
+
+[MOREDOTS]
+  {
+class=CSimpleParticleSystem;
+
+   [properties]
+   {     
+   alwaysVisible=1;
+   Texture=randdots;
+
+   colorMap = 1.0 1.0 1.0 0.05   0.2 0.9 0.5 0.01  0.1 0.8 0.1 0.00;
+
+   pos      = 0, 2, 0;
+   gravity     = 0, -0.1, 0;
+   emitVector  = 0, 1, 0;
+   emitRot     = 45;
+   emitRotSpread  = 32;
+
+   sizeGrowth  = 0.5;
+   sizeMod     = 1;
+
+   airdrag        = 0.8;
+   particleLife      = 5;
+   particleLifeSpread   = 7;
+   numParticles      = 16;
+   particleSpeed     = 8;
+   particleSpeedSpread  = 3;
+   particleSize      = 20;
+   particleSizeSpread   = 0;
+
+   directional    = 1;
+   useAirLos      = 0;
+   }
+air=1;
+ground=1;
+count=1;
+}
+
+}
