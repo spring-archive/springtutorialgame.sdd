@@ -6,7 +6,9 @@ Description = "a simple, mobile unit. does nothing but drive around.",
 objectName = "simplehover.s3o",
 script = "simplehover.lua",
 
+--Health
 maxDamage = 100,
+idleAutoHeal = 0,
 
 --Movement
 Acceleration = 0.2,
@@ -21,13 +23,15 @@ TurnRate = 900,
 
 sightDistance = 300,
 
-Builder = 0,
-CanAttack = 0,
-CanGuard = 1,
-CanMove = 1,
-CanPatrol = 1,
-CanStop = 1,
-LeaveTracks = 0, 
+Category = [[LAND]],
+
+Builder = false,
+CanAttack = false,
+CanGuard = true,
+CanMove = true,
+CanPatrol = true,
+CanStop = true,
+LeaveTracks = false, 
 }
 
 return lowerkeys({ [unitName] = unitDef })
