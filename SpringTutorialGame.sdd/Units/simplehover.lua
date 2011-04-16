@@ -2,7 +2,7 @@ local unitName = "simplehover"
 
 local unitDef = {
 name = "Swoosher",
-Description = "A generic tank unit.",
+Description = "a simple, mobile unit. does nothing but drive around.",
 objectName = "simplehover.s3o",
 script = "simplehover.lua",
 
