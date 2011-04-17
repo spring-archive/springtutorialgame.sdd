@@ -1,10 +1,10 @@
-local unitName = "simplehover"
+local unitName = "hovereffects"
 
 local unitDef = {
-name = "Swoosher",
-Description = "a simple, mobile unit. does nothing but drive around.",
+name = "Acid King",
+Description = "emits colored smoke",
 objectName = "simplehover.s3o",
-script = "simplehover.lua",
+script = "hovereffects.lua",
 
 --Health
 maxDamage = 100,
@@ -31,7 +31,16 @@ CanGuard = true,
 CanMove = true,
 CanPatrol = true,
 CanStop = true,
-LeaveTracks = false, 
+LeaveTracks = false,
+
+sfxtypes = {
+	explosiongenerators = {
+	"custom:whitesmoke",
+	"custom:blacksmoke",
+	"custom:redsmoke",
+	"custom:springlogo_flashing",
+		},
+	},
 }
 
 return lowerkeys({ [unitName] = unitDef })

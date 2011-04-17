@@ -1,6 +1,7 @@
 ---http://springrts.com/wiki/Weapon_Variables#Cannon_.28Plasma.29_Visuals
+local weaponName = "MachineGun"
 local weaponDef = {
-	      name                    = "MachineGun",
+	      name                    = "Machine Gun",
 	      weaponType              = [[Cannon]],
 	      --damage
 		  damage = {
@@ -8,7 +9,7 @@ local weaponDef = {
 				},	      
 	      areaOfEffect            = 8,
 		  --physics
-		  weaponVelocity          = 750,
+		  weaponVelocity          = 500,
 		  reloadtime              = 0.2,
 		  range                   = 350,
 		  sprayAngle              = 300,
@@ -17,10 +18,10 @@ local weaponDef = {
 	      turret                  = true,
 		  craterMult              = 0,	      
 		  --apperance
-		  rgbColor                = [[1 0.95 0.4]],		  
-	      separation              = 2,
-          size                    = 3,
-	      stages                  = 50,
+		  rgbColor                = [[1 0.95 0.4]],		  	      
+          size                    = 4,
+	      stages                  = 20,
+		  separation              = 1,
 		  }
 		
-return lowerkeys({["MachineGun"] = weaponDef}) -- ["MachineGun"] not so nice***
+return lowerkeys({[weaponName] = weaponDef})

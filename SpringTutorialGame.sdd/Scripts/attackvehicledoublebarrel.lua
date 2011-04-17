@@ -6,8 +6,13 @@ local wheel4 = piece "wheel4"
 local wheel_speed = math.rad(180)
 --Define the pieces of the weapon
 local turret = piece "turret"
-local barrel = piece "barrel"
-local flare = piece "flare"
+local barrel_right = piece "barrel_right"
+local barrel_left = piece "barrel_left"
+local flare_right = piece "flare_right"
+local flare_left = piece "flare_left"
+local pivot = piece "pivot"	--both barrels are attached to this "invisible" piece. thus if we tilt this piece for aiming, both barrels will follow the rotation
+local active_barrel = 1		--the barrel that the next shot will be fired from
+local number_of_barrels = 2		--how many barrel there are in total
 --define other pieces
 local body = piece "body"
 
@@ -35,22 +40,37 @@ end
 
 ----aimining & fire weapon
 function script.AimFromWeapon1() 
-	return turret 
+	return turret
 end
 
-function script.QueryWeapon1() 
-	return flare 
+function script.QueryWeapon1()
+	if (active_barrel == 1) then return barrel_right end
+	if (active_barrel == 2) then return barrel_left end
 end
 
 function script.AimWeapon1( heading, pitch )	
 	--aiming animation: instantly turn the gun towards the enemy
 	Turn(turret, y_axis, heading)
-	Turn(barrel, x_axis, -pitch)
+	Turn(pivot, x_axis, -pitch)
 	return true
 end
 
 function script.FireWeapon1()	
+	--switch to the next barrel:
+	active_barrel = active_barrel + 1
+	--if all barrels have fired, start the cyclus from the beginning:
+	if (active_barrel > number_of_barrels) then active_barrel = 1 end
 	
+	--recoil animation
+	if (active_barrel == 1) then
+		Move (barrel_right, z_axis, -5)
+		Move (barrel_right, z_axis, 0, 20)
+	end
+	
+	if (active_barrel == 2) then
+		Move (barrel_left, z_axis, -5)
+		Move (barrel_left, z_axis, 0, 20)
+	end	
 end
 
 ---death animation
