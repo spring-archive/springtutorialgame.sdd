@@ -6,6 +6,7 @@ local modinfo = {
 	shortgame = "STG",
 	description = "Basic game to help new modders",
 	url = "code.google.com/p/springtutorialgame",
+	version = "sdd",
 	modtype = "1",
 	depend = {
 		"cursors.sdz",
