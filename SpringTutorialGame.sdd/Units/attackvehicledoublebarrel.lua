@@ -1,11 +1,15 @@
 local unitName = "attackvehicledoublebarrel"
 
 local unitDef = {
-name = "Boomer",
+name = "Boooomer",
 Description = "the turret of this unit has two barrels and alternates firing between them",
 objectName = "attackvehicledoublebarrel.s3o",
 script = "attackvehicledoublebarrel.lua",
-
+buildPic = "placeholder.png",
+--cost
+buildCostMetal = 200,
+buildCostEnergy = 0,
+buildTime = 5,
 --Health
 maxDamage = 300,
 idleAutoHeal = 0,

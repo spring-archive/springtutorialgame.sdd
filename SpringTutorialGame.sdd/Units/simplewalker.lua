@@ -5,7 +5,11 @@ name = "Walker",
 Description = "a walker. demonstrates use of threads in unit scripts.",
 objectName = "simplewalker.s3o",
 script = "simplewalker.lua",
-
+buildPic = "placeholder.png",
+--cost
+buildCostMetal = 100,
+buildCostEnergy = 100,
+buildTime = 5,
 --Health
 maxDamage = 100,
 idleAutoHeal = 0,
@@ -24,12 +28,17 @@ sightDistance = 300,
 Category = [[LAND]],
 
 Builder = false,
-CanAttack = false,
+CanAttack = true,
 CanGuard = true,
 CanMove = true,
 CanPatrol = true,
 CanStop = true,
-LeaveTracks = false, 
+LeaveTracks = false,
+weapons = {
+[1]={name  = "MachineGun",
+	onlyTargetCategory = [[LAND]],
+	},
+},
 }
 
 return lowerkeys({ [unitName] = unitDef })

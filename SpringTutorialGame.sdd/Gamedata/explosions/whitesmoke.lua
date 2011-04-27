@@ -14,7 +14,7 @@ return {
         alwaysVisible = 0,
         explosiongenerator = [[custom:whitesmoke]],
 		airdrag            = 0.9,
-        colormap           = [[1 1 1 0.75   1 1 1 0.1 ]], --fade out
+        colormap           = [[1 1 1 0.75   1 1 1 0]], --fade out
         directional        = false,
         emitrot            = 90,
         emitrotspread      = 10,
