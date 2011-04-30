@@ -23,6 +23,8 @@ local   resources = {
             largebeam         = 'largelaserfalloff.tga',
 			cartooncloud = 'effects/cartooncloud.png',
 			springlogo = 'effects/springlogo.png',
+			star = 'effects/star.png',
+
          },
       }
    }

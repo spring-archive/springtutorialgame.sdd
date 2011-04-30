@@ -51,7 +51,9 @@ sfxtypes = {
 	"custom:springlogo_flashing",
 		},
 	},
-	explodeAs = "custom:redsmoke",
+	explodeAs = "custom:redsmoke", --***FIXME: does not work?
+	pieceTrailCEGTag = "stars",
+	pieceTrailCEGRange = 3,
 }
 
 return lowerkeys({ [unitName] = unitDef })

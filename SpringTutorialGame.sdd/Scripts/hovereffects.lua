@@ -12,7 +12,7 @@ function script.Create()
 end
 
 function script.Killed(recentDamage, maxHealth)	
-	--EmitSfx (body, redsmoke)
+		Explode (body, SFX.FALL)
 end
 
 function script.StartMoving ()
