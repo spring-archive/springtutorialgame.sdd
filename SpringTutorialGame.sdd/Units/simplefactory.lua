@@ -3,11 +3,11 @@ local unitName = "simplefactory"
 local unitDef =
 {
 -- Internal settings	
-	Category = "BUILDING",
+	Category = "LAND",
 	ObjectName = "factory.s3o",	
 	TEDClass = "PLANT",
 	script = "simplefactory.lua",
-	
+	buildPic = "placeholder.png",
 -- Unit limitations and properties
 	Description = "a simple factory that builds mobile units",
 	MaxDamage = 1500,
@@ -19,7 +19,7 @@ local unitDef =
 	--cost
 	buildCostMetal = 200,
 	buildCostEnergy = 0,
-	buildTime = 5,
+	buildTime = 25,
 	--economy	
 	EnergyStorage = 0,
 	EnergyUse = 0,
@@ -28,10 +28,10 @@ local unitDef =
 	MakesMetal = 0, 
 	MetalMake = 0,	
 -- Pathfinding and related
-	FootprintX = 4,
-	FootprintZ = 4,
+	FootprintX = 5,
+	FootprintZ = 5,
 	MaxSlope = 10,	
-	YardMap ="oooo occo occo occo",
+	YardMap ="ooooo occco occco occco occco",
 
 -- Building	
 	Builder = true,
@@ -41,12 +41,14 @@ local unitDef =
 	workerTime = 1,
 	buildoptions = 
 	{
-		"simplehover",
-		"hoverweapon",
-		"simpleattackvehicle",
-		"attackvehicledoublebarrel",
-		"hovereffects",
-		"simplewalker",
+	"simplehover",
+	"hoverweapon",
+	"simpleattackvehicle",
+	"attackvehicledoublebarrel",
+	"hovereffects",
+	"simplewalker",
+	"buildervehicle",
+	"helicopter",
 	},
 }
 

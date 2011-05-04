@@ -11,7 +11,7 @@ local flare = piece "flare"
 
 
 local SIG_WALK = 1	--signal for the walk animation thread
-local SIG_WALK = 2  --signal for the weapon aiming thread
+local SIG_AIM = 2  --signal for the weapon aiming thread
 local leg_movespeed = 20
 local leg_movedistance = 10
 

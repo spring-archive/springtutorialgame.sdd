@@ -8,6 +8,7 @@ Normal = {
 	"simplewalker",
 	"cube",
 	"simplefactory",
+	"helicopter",
 },
 
 }

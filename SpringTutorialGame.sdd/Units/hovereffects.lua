@@ -23,6 +23,7 @@ FootprintZ = 2,
 MaxVelocity = 8.0,
 --MaxWaterDepth = 20,
 MovementClass = "Hover2x2",
+canHover = true,
 TurnRate = 900,
 
 sightDistance = 300,
