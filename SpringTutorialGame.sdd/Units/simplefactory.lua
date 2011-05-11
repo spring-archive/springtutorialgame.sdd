@@ -49,6 +49,8 @@ local unitDef =
 	"simplewalker",
 	"buildervehicle",
 	"helicopter",
+	"attackvehiclerocket",
+	"attackvehiclemultimissile",
 	},
 }
 

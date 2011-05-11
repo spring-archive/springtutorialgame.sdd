@@ -2,7 +2,7 @@ local unitName = "buildervehicle"
 
 local unitDef = {
 name = "Erector",
-Description = "a crane that builds stuff",
+Description = "a crane that builds stuff. has heavy armour that prevents damage from maschine guns (see armordefs.lua)",
 objectName = "buildervehicle.s3o",
 script = "buildervehicle.lua",
 buildPic = "placeholder.png",

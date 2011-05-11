@@ -1,14 +1,7 @@
 local armorDefs = {
-Normal = {
-	"simplehover",
-	"hoverweapon",
-	"hovereffects",
-	"simpleattackvehicle",
-	"attackvehicledoublebarrel",
-	"simplewalker",
-	"cube",
+heavyarmor = {
 	"simplefactory",
-	"helicopter",
+	"buildervehicle",
 },
 
 }
