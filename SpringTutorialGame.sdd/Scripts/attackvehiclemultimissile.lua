@@ -14,6 +14,7 @@ for i=1,8 do
 end
 local rocket_i = 1
 
+--define the pieces that weapons are emited from
 local flares = {}
 for i=1,8 do
 	local pname = "flare" .. i
@@ -26,6 +27,9 @@ local SIG_AIM = 2  --signal for the weapon aiming thread
 
 --define other pieces
 local body = piece "body"
+
+--get the effects that are defined in the unitDef:
+local muzzleflash = SFX.CEG + 0
 
 function script.Create()
 	
@@ -67,9 +71,12 @@ function script.AimWeapon1( heading, pitch )
 end
 
 function script.Shot1()	
+	--emit muzzle flash CEG
+	EmitSfx (flares [rocket_i] , muzzleflash)
 	StartThread (reload_animation, rockets[rocket_i])
+	--increase counter to the next rocket, loop to start if max number of rockets is reached
 	rocket_i = rocket_i +1
-	if (rocket_i > #rockets) then rocket_i = 1 end
+	if (rocket_i > #rockets) then rocket_i = 1 end	
 end
 
 function reload_animation (rocket)

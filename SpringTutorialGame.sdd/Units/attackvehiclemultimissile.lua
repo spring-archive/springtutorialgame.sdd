@@ -41,6 +41,16 @@ weapons = {
 	onlyTargetCategory = [[LAND AIR]],
 	},
 },
+
+--effects, useable in the animation script
+sfxtypes = {
+	explosiongenerators = {
+	"custom:muzzleflash",
+		},
+	},
+
 }
+
+
 
 return lowerkeys({ [unitName] = unitDef })

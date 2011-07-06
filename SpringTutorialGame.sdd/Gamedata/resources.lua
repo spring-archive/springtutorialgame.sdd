@@ -18,12 +18,15 @@ local   resources = {
             explofade         = 'explofade.tga',
             heatcloud         = 'explo.tga',
             flame            = 'flame.tga',
-            muzzleside         = 'muzzleside.tga',
-            muzzlefront         = 'muzzlefront.tga',
+            --muzzleside         = 'muzzleside.tga',
+            --muzzlefront         = 'muzzlefront.tga',
             largebeam         = 'largelaserfalloff.tga',
 			cartooncloud = 'effects/cartooncloud.png',
 			springlogo = 'effects/springlogo.png',
 			star = 'effects/star.png',
+            muzzleflash_side         = 'effects/muzzleflash_side.tga',
+            muzzleflash_front        = 'effects/muzzleflash_front.tga',
+
 
          },
       }
