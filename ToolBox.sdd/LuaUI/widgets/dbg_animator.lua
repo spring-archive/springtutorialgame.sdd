@@ -296,9 +296,9 @@ function widget:SelectionChanged(selectedUnits)
 end
 
 function widget:Initialize()
-	local animationMode = Spring.GetGameRulesParam('animation') == 1
-	echo ( animationMode )
-	if not WG.Chili or not animationMode then
+	local devMode = Spring.GetGameRulesParam('animation') == 1
+	echo ( devMode )
+	if not WG.Chili or not devMode then
 		widgetHandler:RemoveWidget(widget)
 		return
 	end

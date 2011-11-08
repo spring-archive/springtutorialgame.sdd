@@ -28,15 +28,15 @@ local function tobool(val)
   return false
 end
 
-local animationMode = true --tobool(Spring.GetModOptions().animation)
-if not animationMode then return end
+local devMode = tobool(Spring.GetModOptions().devmode)
+--if not devMode then return end
 
 
 local echo = Spring.Echo
 
 if (gadgetHandler:IsSyncedCode()) then
 
-Spring.SetGameRulesParam('animation', 1)
+Spring.SetGameRulesParam('devmode', 1)
 
 
 local function explode(div,str)
