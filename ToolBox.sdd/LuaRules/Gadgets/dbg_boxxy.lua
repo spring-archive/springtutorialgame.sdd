@@ -30,6 +30,8 @@ function gadget:RecvLuaMsg(msg, playerID)
 	
 	local key = data[3]
 	
+	local xtra = data[4]
+	
 	if cmd == 'sel' and key then
 		local unitID = key+0 --convert to int!
 		euID = unitID 
@@ -37,7 +39,11 @@ function gadget:RecvLuaMsg(msg, playerID)
 	end
 	
 	if (euID) then
-		boxxy = ({Spring.GetUnitCollisionVolumeData (euID)})	
+		boxxy = ({Spring.GetUnitCollisionVolumeData (euID)})
+		
+		d = (xtra == 'x' and 10 or 1)
+		
+		
 		if (key=="8") then boxxy[2]=boxxy[2]+d end
 		if (key=="2") then boxxy[2]=boxxy[2]-d end
 		if (key=="6") then boxxy[1]=boxxy[1]+d end
@@ -50,10 +56,7 @@ function gadget:RecvLuaMsg(msg, playerID)
 		if (key=="D") then boxxy[4]=boxxy[4]+d end
 		if (key=="Q") then boxxy[5]=boxxy[5]-d end
 		if (key=="E") then boxxy[5]=boxxy[5]+d end
-		if (key=="5") then 
-			if d==1 then d=10 else d = 1 end
-			Spring.Echo ("now moving and scaling with stepsize=" .. d)
-		end	
+
 		if (key=="1") then 
 			if boxxy[7] == 0 then
 				boxxy[7] = 1

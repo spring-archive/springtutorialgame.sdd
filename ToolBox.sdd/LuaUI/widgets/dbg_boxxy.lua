@@ -54,44 +54,71 @@ local function MakeWindow(unitID)
 	
 	children[#children+1] = Label:New{ caption = 'Resize', }
 	children[#children+1] = Label:New{ caption = '', }
+	children[#children+1] = Label:New{ caption = '', }
+	children[#children+1] = Label:New{ caption = '', }
+	children[#children+1] = Label:New{ caption = '', }
 	
-	children[#children+1] = MakeButton( "Z-", "boxxy|col|2", "shorter" )
-	children[#children+1] = MakeButton( "Z+", "boxxy|col|8", "taller" )
 	
-	children[#children+1] = MakeButton( "X-", "boxxy|col|4", "narrower" )
-	children[#children+1] = MakeButton( "X+", "boxxy|col|6", "wider" )
+	children[#children+1] = Label:New{ caption = 'X', }
+	children[#children+1] = MakeButton( "<<", "boxxy|col|4|x", "narrower" )
+	children[#children+1] = MakeButton( "<", "boxxy|col|4", "narrower" )
+	children[#children+1] = MakeButton( ">", "boxxy|col|6", "wider" )
+	children[#children+1] = MakeButton( ">>", "boxxy|col|6|x", "wider" )
 	
-	children[#children+1] = MakeButton( "Y-", "boxxy|col|7", "shorter" )
-	children[#children+1] = MakeButton( "Y+", "boxxy|col|9", "longer" )
+	children[#children+1] = Label:New{ caption = 'Y', }
+	children[#children+1] = MakeButton( "<<", "boxxy|col|7|x", "shorter" )
+	children[#children+1] = MakeButton( "<", "boxxy|col|7", "shorter" )
+	children[#children+1] = MakeButton( ">", "boxxy|col|9", "longer" )
+	children[#children+1] = MakeButton( ">>", "boxxy|col|9|x", "longer" )
+	
+	children[#children+1] = Label:New{ caption = 'Z', }
+	children[#children+1] = MakeButton( "<<", "boxxy|col|2|x", "shorter" )
+	children[#children+1] = MakeButton( "<", "boxxy|col|2", "shorter" )
+	children[#children+1] = MakeButton( ">", "boxxy|col|8", "taller" )
+	children[#children+1] = MakeButton( ">>", "boxxy|col|8|x", "taller" )
 	
 	
 	children[#children+1] = Label:New{ caption = 'Move', }
 	children[#children+1] = Label:New{ caption = '', }
-	
-	children[#children+1] = MakeButton( "X-", "boxxy|col|A", "to left" )
-	children[#children+1] = MakeButton( "X+", "boxxy|col|D", "to right" )
-	
-	children[#children+1] = MakeButton( "Y-", "boxxy|col|S", "to back" )
-	children[#children+1] = MakeButton( "Y+", "boxxy|col|W", "to front" )
-	
-	children[#children+1] = MakeButton( "Z-", "boxxy|col|Q", "to down" )
-	children[#children+1] = MakeButton( "Z+", "boxxy|col|E", "to up" )
-	
-	
-	children[#children+1] = Label:New{ caption = 'Other', }
+	children[#children+1] = Label:New{ caption = '', }
+	children[#children+1] = Label:New{ caption = '', }
 	children[#children+1] = Label:New{ caption = '', }
 	
-	children[#children+1] = MakeButton( "Volume Type-", "boxxy|col|1", "volume type" )
-	children[#children+1] = MakeButton( "Volume Type+", "boxxy|col|3", "volume type" )
+	children[#children+1] = Label:New{ caption = 'X', }
+	children[#children+1] = MakeButton( "<<", "boxxy|col|A|x", "to left" )
+	children[#children+1] = MakeButton( "<", "boxxy|col|A", "to left" )
+	children[#children+1] = MakeButton( ">", "boxxy|col|D", "to right" )
+	children[#children+1] = MakeButton( ">>", "boxxy|col|D|x", "to right" )
 	
-	children[#children+1] = MakeButton( "Change Increment", "boxxy|col|5", "changing increment" )
-	children[#children+1] = MakeButton( "Volume Test", "boxxy|col|0", "toggle volume test" )
+	children[#children+1] = Label:New{ caption = 'Y', }
+	children[#children+1] = MakeButton( "<<", "boxxy|col|S|x", "to back" )
+	children[#children+1] = MakeButton( "<", "boxxy|col|S", "to back" )
+	children[#children+1] = MakeButton( ">", "boxxy|col|W", "to front" )
+	children[#children+1] = MakeButton( ">>", "boxxy|col|W|x", "to front" )
+	
+	children[#children+1] = Label:New{ caption = 'Z', }
+	children[#children+1] = MakeButton( "<<", "boxxy|col|Q|x", "to down" )
+	children[#children+1] = MakeButton( "<", "boxxy|col|Q", "to down" )
+	children[#children+1] = MakeButton( ">", "boxxy|col|E", "to up" )
+	children[#children+1] = MakeButton( ">>", "boxxy|col|E|x", "to up" )
+	
+	
+	children[#children+1] = Label:New{ caption = 'Volume', }
+	children[#children+1] = Label:New{ caption = '', }
+	children[#children+1] = Label:New{ caption = '', }
+	children[#children+1] = Label:New{ caption = '', }
+	children[#children+1] = Label:New{ caption = '', }
+	
+	children[#children+1] = MakeButton( "< Type", "boxxy|col|1", "volume type" )
+	children[#children+1] = MakeButton( "Type >", "boxxy|col|3", "volume type" )
+	
+	children[#children+1] = MakeButton( "Vol Test", "boxxy|col|0", "toggle volume test" )
 	
 	
 	
 	--stack1 = StackPanel:New{
 	stack1 = Grid:New{
-		columns = 2,
+		columns = 5,
 		
 		--autosize = false,
 		resizeItems = true,
