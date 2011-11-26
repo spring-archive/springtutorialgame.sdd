@@ -98,7 +98,7 @@ end
   
 function gadget:RecvLuaMsg(msg, playerID)
 	--echo (msg)
-	pre = "tpkey" --boxxy
+	pre = "animator"
 	--if (msg:find(pre,1,true)) then Spring.Echo ("its a loveNtrolls message") end
 	local data = explode( '|', msg )
 	
@@ -159,7 +159,16 @@ function gadget:RecvLuaMsg(msg, playerID)
 	elseif cmd == 'reset' then
 		local unitID = param1+0 --convert to num!
 		Reset(unitID)
-		
+	
+	elseif cmd == 'hide' then
+		local unitID = param1+0 --convert to num!
+		local pieceNum = param2+0 --convert to num!
+		Spring.UnitScript.CallAsUnit(unitID, Spring.UnitScript.Hide, 	pieceNum )
+	elseif cmd == 'show' then
+		local unitID = param1+0 --convert to num!
+		local pieceNum = param2+0 --convert to num!
+		Spring.UnitScript.CallAsUnit(unitID, Spring.UnitScript.Show, 	pieceNum )
+	
 	end
 	
 	--Spring.Echo ("RecvLuaMsg: " .. msg .. " from " .. playerID)
