@@ -53,7 +53,7 @@ end
 
 
 local function WriteCurrent( unitID )
-	local env = Spring.UnitScript.GetScriptEnv(unitID)
+	local env = true -- Spring.UnitScript.GetScriptEnv(unitID)
 	if not env then return end
 		
 	local allpieces = Spring.GetUnitPieceMap(unitID)	
@@ -83,7 +83,7 @@ local function WriteCurrent( unitID )
 end
 
 local function Reset(unitID)
-	local env = Spring.UnitScript.GetScriptEnv(unitID)
+	local env = true -- Spring.UnitScript.GetScriptEnv(unitID)
 	if env and Spring.UnitScript.GetPieceRotation then
 		local allpieces = Spring.GetUnitPieceMap(unitID)	
 		
@@ -121,7 +121,7 @@ function gadget:RecvLuaMsg(msg, playerID)
 	elseif cmd == 'getpieceinfo' and param1 and param2 then
 		local unitID = param1+0 --convert to int!
 		local pieceNum = param2+0 --convert to int!
-		local env = Spring.UnitScript.GetScriptEnv(unitID)
+		local env = true -- Spring.UnitScript.GetScriptEnv(unitID)
 		if env and Spring.UnitScript.GetPieceRotation then
 		
 			local rx,ry,rz = Spring.UnitScript.CallAsUnit(unitID, Spring.UnitScript.GetPieceRotation, 		pieceNum)
@@ -142,7 +142,7 @@ function gadget:RecvLuaMsg(msg, playerID)
 			axisnum = 3
 		end
 		
-		local env = Spring.UnitScript.GetScriptEnv(unitID)
+		local env = true --Spring.UnitScript.GetScriptEnv(unitID)
 		if env then
 			if cmd == 'move' then
 				Spring.UnitScript.CallAsUnit(unitID, Spring.UnitScript.Move, 	pieceNum, axisnum, val )
