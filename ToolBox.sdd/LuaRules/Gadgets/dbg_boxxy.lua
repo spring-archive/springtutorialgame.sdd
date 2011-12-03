@@ -70,7 +70,7 @@ function gadget:RecvLuaMsg(msg, playerID)
 			elseif boxxy[7] == 2 then
 				boxxy[7] = 0
 			else 
-				Spring.Echo("Cannot toggle volume with no collisionVolumeType in unitdef")
+				boxxy[7] = 2
 			end
 		end		
 		if (key=="3") then 
@@ -86,7 +86,7 @@ function gadget:RecvLuaMsg(msg, playerID)
 				boxxy[7] = 1
 				boxxy[9] = 2
 			else 
-				Spring.Echo("Cannot toggle volume with no collisionVolumeType in unitdef")
+				boxxy[7] = 2
 			end
 		end	
 		if (key=="0") then
