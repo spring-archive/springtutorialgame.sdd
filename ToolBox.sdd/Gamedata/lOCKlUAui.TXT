@@ -1,0 +1,1 @@
+Gundam loads an updated widget handler using lockluaui.  It prefers mod versions of files but is otherwise normal, and is updated to a version past 78.2

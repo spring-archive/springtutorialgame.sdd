@@ -176,12 +176,12 @@ function widget:SelectionChanged(selectedUnits)
 end
 
 function widget:Initialize()
-	local devMode = Spring.GetGameRulesParam('devmode') == 1
+	--[[local devMode = Spring.GetGameRulesParam('devmode') == 1
 	echo ( devMode )
 	if not WG.Chili or not devMode then
 		widgetHandler:RemoveWidget(widget)
 		return
-	end
+	end]]
 	
 	-- setup Chili
 	Chili = WG.Chili
