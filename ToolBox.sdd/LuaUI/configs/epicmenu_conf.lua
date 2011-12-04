@@ -112,6 +112,7 @@ path='Game'
 path='Settings/Toolbox'
 	ShButton( 'Animator', function() spSendCommands{"luaui togglewidget AnimatorGUI"} end )
 	ShButton( 'Boxxy', function() spSendCommands{"luaui togglewidget Boxxy setup"} end )
+	ShButton( 'WaterConfigure', function() spSendCommands{"luaui togglewidget Water Configurer"} end )
 
 path='Settings/Camera'
 	ShLabel( 'Camera Type') 
