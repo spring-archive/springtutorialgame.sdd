@@ -4,12 +4,12 @@
 function widget:GetInfo()
   return {
     name      = "CEG Spawner",
-    desc      = "v0.02 Spawn CEGs",
+    desc      = "v0.03 Spawn CEGs",
     author    = "CarRepairer",
     date      = "2010-11-07",
     license   = "GPLv2",
     layer     = 5,
-    enabled   = false,  --  loaded by default?
+    enabled   = true,  --  loaded by default?
   }
 end
 
