@@ -150,20 +150,21 @@ local green = {0,1,0,1}
 local orange =  {1,0.5,0,1}
 local gray =  {0.7,0.7,0.7,1}
 local groupDescs = {
-	api     = "For Developers",
-	camera  = "Camera",
-	cmd     = "Commands",
-	dbg     = "For Developers",
-	gfx     = "Effects",
+	api     = "APIs",
+	--[[camera  = "Camera",
+	cmd     = "Commands",]]
+	dbg     = "TOOLBOX",
+	--[[gfx     = "Effects",
 	gui     = "GUI",
 	hook    = "Commands",
 	ico     = "GUI",
 	init    = "Initialization",
 	minimap = "Minimap",
-	snd     = "Sound",
-	test    = "For Developers",
-	unit    = "Units",
-	ungrouped    = "Ungrouped",
+	snd     = "Sound",]]
+	test    = "TOOLBOX",
+	--[[unit    = "Units",]]
+	ungrouped    = "Game & Local Widgets",
+	chili	= "Chili Framework",
 }
 
 --------------------------------------------------------------------------------
@@ -469,7 +470,7 @@ local function MakeWidgetList()
 		local name = name
 		local name_display = name .. (data.fromZip and ' (mod)' or '')
 		local data = data
-		local _, _, category = string.find(data.basename, "([^_]*)")
+		local a, b, category = string.find(data.basename, "([^_]*)")
 		
 		if not groupDescs[category] then
 			category = 'ungrouped'
@@ -499,7 +500,7 @@ local function MakeWidgetList()
 	
 	--Sort widget categories
 	table.sort(widgets_cats_i, function(t1,t2)
-		return t1[1] < t2[1]
+		return t1[1] > t2[1]
 	end)
 	
 	for _, data in pairs(widgets_cats_i) do
