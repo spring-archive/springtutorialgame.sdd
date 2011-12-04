@@ -9,7 +9,7 @@ function widget:GetInfo()
     date      = "2010-03-05",
     license   = "push button magic",
     layer     = 0,
-    enabled   = true,
+    enabled   = false,
   }
 end
 
@@ -306,7 +306,6 @@ end
 
 function widget:Initialize()
 	local devMode = Spring.GetGameRulesParam('devmode') == 1
-	echo ( devMode )
 	if not WG.Chili or not devMode then
 		widgetHandler:RemoveWidget(widget)
 		return

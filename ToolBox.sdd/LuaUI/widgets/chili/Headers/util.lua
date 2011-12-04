@@ -7,6 +7,10 @@ end
 --//=============================================================================
 
 function unpack4(t)
+  if not t then
+    Spring.Echo('<Chili> Warning: Headers/util.lua unpack4 bad first parameter! Needs debug!')
+    return
+  end
   return t[1], t[2], t[3], t[4]
 end
 

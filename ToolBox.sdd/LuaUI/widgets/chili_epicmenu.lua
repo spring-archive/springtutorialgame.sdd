@@ -1,7 +1,7 @@
 function widget:GetInfo()
   return {
     name      = "EPIC Menu",
-    desc      = "v1.28 Extremely Powerful Ingame Chili Menu.",
+    desc      = "v1.284 Extremely Powerful Ingame Chili Menu.",
     author    = "CarRepairer",
     date      = "2009-06-02",
     license   = "GNU GPL, v2 or later",
@@ -99,6 +99,9 @@ local transkey = {
 	leftbracket 	= '[',
 	rightbracket 	= ']',
 	--delete 			= 'del',
+	comma 			= ',',
+	period 			= '.',
+	slash 			= '/',
 	
 	kp_multiply		= 'numpad*',
 	kp_divide		= 'numpad/',
@@ -150,21 +153,20 @@ local green = {0,1,0,1}
 local orange =  {1,0.5,0,1}
 local gray =  {0.7,0.7,0.7,1}
 local groupDescs = {
-	api     = "APIs",
-	--[[camera  = "Camera",
-	cmd     = "Commands",]]
-	dbg     = "TOOLBOX",
-	--[[gfx     = "Effects",
+	api     = "For Developers",
+	camera  = "Camera",
+	cmd     = "Commands",
+	dbg     = "For Developers",
+	gfx     = "Effects",
 	gui     = "GUI",
 	hook    = "Commands",
 	ico     = "GUI",
 	init    = "Initialization",
 	minimap = "Minimap",
-	snd     = "Sound",]]
-	test    = "TOOLBOX",
-	--[[unit    = "Units",]]
-	ungrouped    = "Game & Local Widgets",
-	chili	= "Chili Framework",
+	snd     = "Sound",
+	test    = "For Developers",
+	unit    = "Units",
+	ungrouped    = "Ungrouped",
 }
 
 --------------------------------------------------------------------------------
@@ -470,7 +472,7 @@ local function MakeWidgetList()
 		local name = name
 		local name_display = name .. (data.fromZip and ' (mod)' or '')
 		local data = data
-		local a, b, category = string.find(data.basename, "([^_]*)")
+		local _, _, category = string.find(data.basename, "([^_]*)")
 		
 		if not groupDescs[category] then
 			category = 'ungrouped'
@@ -500,7 +502,7 @@ local function MakeWidgetList()
 	
 	--Sort widget categories
 	table.sort(widgets_cats_i, function(t1,t2)
-		return t1[1] > t2[1]
+		return t1[1] < t2[1]
 	end)
 	
 	for _, data in pairs(widgets_cats_i) do
@@ -668,7 +670,7 @@ local function MakeFlags()
 	local window_height = 300
 	local window_width = 170
 	window_flags = Window:New{
-		caption = 'Choose Your Location',
+		caption = 'Choose Your Location...',
 		x = settings.sub_pos_x,  
 		y = settings.sub_pos_y,  
 		clientWidth  = window_width,
@@ -1562,9 +1564,11 @@ end
 
 -- Show or hide menubar
 local function ShowHideCrudeMenu()
+	WG.crude.visible = settings.show_crudemenu -- HACK set it to wg to signal to player list 
 	if settings.show_crudemenu then
 		if window_crude then
 			screen0:AddChild(window_crude)
+			--WG.chat.showConsole()
 			window_crude:UpdateClientArea()
 		end
 		if window_sub_cur then
@@ -1573,6 +1577,7 @@ local function ShowHideCrudeMenu()
 	else
 		if window_crude then
 			screen0:RemoveChild(window_crude)
+			--WG.chat.hideConsole()
 		end
 		if window_sub_cur then
 			screen0:RemoveChild(window_sub_cur)
@@ -1624,16 +1629,7 @@ local function AddCustomPaths(menuname)
 end
 
 -- Make menubar
-local function MakeCrudeMenu()
-	local btn_padding = {4,3,2,2}
-	local btn_margin = {0,0,0,0}
-	if window_crude then
-		window_crude:Dispose()
-		window_crude = nil
-	end
-		
-	local crude_width = 425
-	local crude_height = B_HEIGHT+10
+local function BuildMenuTree()
 	
 	local menu_tree3 		= AddCustomPaths('Settings')
 	local game_menu_tree3 	= AddCustomPaths('Game')
@@ -1647,6 +1643,16 @@ local function MakeCrudeMenu()
 	local game_menu_index = flattenTree(game_menu_tree3, '' )
 	local help_menu_index = flattenTree(help_menu_tree3, '' )
 	
+end
+
+local function MakeMenuBar()
+	local btn_padding = {4,3,2,2}
+	local btn_margin = {0,0,0,0}
+		
+	local crude_width = 425
+	local crude_height = B_HEIGHT+10
+	
+
 	lbl_fps = Label:New{ name='lbl_fps', caption = 'FPS:', textColor = color.sub_header,  }
 	lbl_gtime = Label:New{ name='lbl_gtime', caption = 'Time:', textColor = color.sub_header, align="center" }
 	lbl_clock = Label:New{ name='lbl_clock', caption = 'Clock:', width = 35, height=5, textColor = color.main_fg, autosize=false, }
@@ -1662,6 +1668,7 @@ local function MakeCrudeMenu()
 		draggable = false,
 		tweakDraggable = true,
 		resizable = false,
+		minimizable = false,
 		backgroundColor = color.main_bg,
 		color = {1,1,1,0.5},
 		margin = {0,0,0,0},
@@ -1687,14 +1694,14 @@ local function MakeCrudeMenu()
 					-- odd-number button width keeps image centered
 					Button:New{
 						caption = "", OnMouseUp = { function() MakeSubWindow('Game') end, }, textColor=color.game_fg, height=B_HEIGHT+4, width=B_HEIGHT+5,
-						padding = btn_padding, margin = btn_margin,	tooltip = 'Game Actions',
+						padding = btn_padding, margin = btn_margin,	tooltip = 'Game Actions and Settings...',
 						children = {
 							Image:New{file=LUAUI_DIRNAME .. 'Images/epicmenu/game.png', height=B_HEIGHT-2,width=B_HEIGHT-2},
 						},
 					},
 					Button:New{
 						caption = "", OnMouseUp = { function() MakeSubWindow('Settings') end, }, textColor=color.menu_fg, height=B_HEIGHT+4, width=B_HEIGHT+5,
-						padding = btn_padding, margin = btn_margin,	tooltip = 'Settings', 
+						padding = btn_padding, margin = btn_margin,	tooltip = 'General Settings...', 
 						children = {
 							Image:New{ tooltip = 'Settings', file=LUAUI_DIRNAME .. 'Images/epicmenu/settings.png', height=B_HEIGHT-2,width=B_HEIGHT-2, },
 						},
@@ -1777,9 +1784,25 @@ local function MakeCrudeMenu()
 						itemMargin = {0,0,0,0},
 						
 						children = {
-							lbl_gtime,
-							lbl_fps,
 							
+							lbl_fps,
+							StackPanel:New{
+								orientation = 'horizontal',
+								width = 60,
+								height = '100%',
+								resizeItems = false,
+								autoArrangeV = false,
+								autoArrangeH = false,
+								padding = {0,0,0,0},
+								itemMargin = {2,0,0,0},
+								children = {
+									Image:New{ file= LUAUI_DIRNAME .. 'Images/epicmenu/game.png', width = 20,height = 20,  },
+									lbl_gtime,
+								},
+							},
+							
+							
+							img_flag,
 							StackPanel:New{
 								orientation = 'horizontal',
 								width = 60,
@@ -1794,20 +1817,20 @@ local function MakeCrudeMenu()
 									lbl_clock,
 								},
 							},
-							img_flag,							
+							
 						},
 					},
 					
 					Button:New{
 						caption = "", OnMouseUp = { function() MakeSubWindow('Help') end, }, textColor=color.menu_fg, height=B_HEIGHT+4, width=B_HEIGHT+5,
-						padding = btn_padding, margin = btn_margin, tooltip = 'Help', 
+						padding = btn_padding, margin = btn_margin, tooltip = 'Help...', 
 						children = {
 							Image:New{ file=LUAUI_DIRNAME .. 'Images/epicmenu/questionmark.png', height=B_HEIGHT-2,width=B_HEIGHT-2,  },
 						},
 					},
 					Button:New{
 						caption = "", OnMouseUp = { function() spSendCommands{"quitmenu"} end, }, textColor=color.menu_fg, height=B_HEIGHT+4, width=B_HEIGHT+5,
-						padding = btn_padding, margin = btn_margin, tooltip = 'Exit the game...,',
+						padding = btn_padding, margin = btn_margin, tooltip = 'Exit the game...',
 						children = {
 							Image:New{file=LUAUI_DIRNAME .. 'Images/epicmenu/quit.png', height=B_HEIGHT-2,width=B_HEIGHT-2,  }, 
 						},
@@ -1823,7 +1846,7 @@ end
 RemakeEpicMenu = function()
 	local lastSubKey = curSubKey
 	KillSubWindow()
-	MakeCrudeMenu()
+	BuildMenuTree()
 	if lastSubKey ~= '' then	
 		MakeSubWindow(lastSubKey)
 	end
@@ -1953,7 +1976,8 @@ function widget:Initialize()
 	Spring.SendCommands("bind esc crudemenu")
 	Spring.SendCommands("bind f11 crudewidgetlist")
 
-	MakeCrudeMenu()
+	BuildMenuTree()
+	MakeMenuBar()
 	
 	-- Override widgethandler functions for the purposes of alerting crudemenu 
 	-- when widgets are loaded, unloaded or toggled
@@ -2055,7 +2079,7 @@ function widget:Update()
 			lbl_fps:SetCaption( 'FPS: ' .. Spring.GetFPS() )
 		end
 		if lbl_gtime then
-			lbl_gtime:SetCaption( '[' .. GetTimeString() ..']' )
+			lbl_gtime:SetCaption( GetTimeString() )
 		end
 		if lbl_clock then
 			--local displaySeconds = true

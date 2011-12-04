@@ -101,7 +101,6 @@ path='Game'
 	ShLabel('') 
 	ShButton( 'Last Message Position', 'lastmsgpos' )
 	ShButton( 'Share Dialog...', 'sharedialog' ) 
-	ShButton( 'Choose Commander Type', (function() spSendCommands{"luaui showstartupinfoselector"} end) ) 
 
 
 path='Game/Screenshots'	
@@ -109,8 +108,10 @@ path='Game/Screenshots'
 	ShButton( 'Save Screenshot (JPG)', 'screenshot jpg', 'Find your screenshots under Spring/screenshots' ) 
 	
 path='Game'
-	ShButton( 'Factory Guard', function() spSendCommands{"luaui togglewidget FactoryGuard"} end ) 
 
+path='Settings/Toolbox'
+	ShButton( 'Animator', function() spSendCommands{"luaui togglewidget AnimatorGUI"} end )
+	ShButton( 'Boxxy', function() spSendCommands{"luaui togglewidget Boxxy setup"} end )
 
 path='Settings/Camera'
 	ShLabel( 'Camera Type') 
@@ -171,29 +172,6 @@ path='Settings/Misc'
 	ShButton( 'LuaUI TweakMode (Esc to exit)', 'luaui tweakgui', 'LuaUI TweakMode. Move and resize parts of the user interface. (Hit Esc to exit)' )
 
 path='Settings/Mouse Cursor'
-	AddOption({
-		name = 'Cursor Sets',
-		type = 'list',
-		OnChange = function (self) 
-			if self.value == 'zk' then
-				WG.crude.RestoreCursor()
-			else
-				WG.crude.SetCursor( self.value ); 
-			end
-		end,
-		items = {
-			{ key = 'zk', name = 'Animated', },
-			{ key = 'zk_static', name = 'Static', },
-			{ key = 'ca', name = 'CA Classic', },
-			{ key = 'ca_static', name = 'CA Static', },
-			{ key = 'erom', name = 'Erom', },
-			{ key = 'masse', name = 'Masse', },
-			{ key = 'Lathan', name = 'Lathan', },
-			{ key = 'k_haos_girl', name = 'K_haos_girl', },
-		},
-		value = 'zk',
-	})
-	ShLabel('')
 	ShButton('Toggle Grab Input', function() spSendCommands{"grabinput"} end, 'Mouse cursor won\'t be able to leave the window.' )
 
 path='Settings/Video'
@@ -289,14 +267,11 @@ path='Settings/View/Effects'
 path='Help'
 	AddOption({
 		type='text',
-		name='Tips',
-		value=[[Hold your meta-key (spacebar by default) while clicking on a unit or corpse for more info and options. 
-			You can also space-click on menu elements to see context settings. 
+		name='Help',
+		value=[[
+		To use toolbox functions, click on the wrench and select the Toolbox... menu.
 			]]
 	})
-	ShButton('Tutorial', function() spSendCommands{"luaui togglewidget Nubtron"} end )
-	ShButton('Tip Dispenser', function() spSendCommands{"luaui togglewidget Automatic Tip Dispenser"} end )
-
 
 
 return confdata
