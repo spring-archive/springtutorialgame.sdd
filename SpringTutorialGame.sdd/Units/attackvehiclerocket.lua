@@ -44,6 +44,7 @@ weapons = {
 	},
 },
 
+
 }
 
 return lowerkeys({ [unitName] = unitDef })
