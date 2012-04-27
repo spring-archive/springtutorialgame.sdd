@@ -9,7 +9,7 @@ buildPic = "placeholder.png",
 --cost
 buildCostMetal = 500,
 buildCostEnergy = 0,
-buildTime = 5,
+buildTime = 15,
 --Health
 maxDamage = 800,
 idleAutoHeal = 0,
